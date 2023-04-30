@@ -6,7 +6,7 @@ This project is a work in progress, beginning in the final months of 2021. As of
 
 This web app is designed to be used in a study that uses eye tracking to study visual attention during learning and problem solving. The functions are as follows:
 
-# Login
+## Login
   <ul>
     <li>Student logs in with school credentials (Username, student number, etc...)</li>
     <li>Web app runs on https protocol</li>
@@ -14,7 +14,7 @@ This web app is designed to be used in a study that uses eye tracking to study v
   </ul>
   
 
-# Content
+## Content
   <ul>
     <li>Content (equations, figures, charts) animated with anime.js</li>
     <li>Assessment questions are submitted asychronusly with jQuery</li>
@@ -22,7 +22,7 @@ This web app is designed to be used in a study that uses eye tracking to study v
   <li>Buttons turn red when clicked to facilitate eye-tracking</li>
   </ul>
   
-# Data Collection
+## Data Collection
   <ul>
     <li>Click data is collected and submitted asychronusly (jQuery)</li>
     <li>Mouse location is collected</li>
@@ -37,7 +37,7 @@ This web app is designed to be used in a study that uses eye tracking to study v
   <li>time stamps (client-side)</li>
   </ul>
 
-  # Updates 2023
+## Updates 2023 (in-progress)
   <ul>
     <li>Add user signup form</li>
     <li>Add login recovery form</li>
