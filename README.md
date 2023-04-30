@@ -36,3 +36,12 @@ This web app is designed to be used in a study that uses eye tracking to study v
             </ul>
   <li>time stamps (client-side)</li>
   </ul>
+
+  # Updates 2023
+  <ul>
+    <li>Add user signup form</li>
+    <li>Add login recovery form</li>
+    <li>Add data retrieval API</li>
+    <li>Add eye-tracking calibration</li>
+    <li>Combine force,energy,and sho modules (optional)</li>
+  </ul>
