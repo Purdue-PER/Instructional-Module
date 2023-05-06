@@ -116,6 +116,3 @@ class posttestMouseEvent(models.Model):
     clickedITMbr = models.CharField(max_length=25,blank=True)
     keyPressed = models.CharField(max_length=25,blank=True)
 
-def hello():
-    print("hello")
-
