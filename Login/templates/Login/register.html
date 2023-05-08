@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+<style>
+</style>
+
+<link rel="stylesheet" href="{% static "utility.css"%}">
+<link rel="stylesheet" href="{% static "style.css"%}"> 
+<script src="{% static "Login/JS/login.js"%}"></script>
+<title>Welcome!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="navbar" class="navbar-container">
+    <div class="navbar-logo">
+        <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
+        Module
+     </div>
+    <div class="tabs">
+        <nav>
+          <ul>
+              <li><a id="Login" class="inactive" href="#">Login</a></li>
+              <li><a id="Register" class="active" href="#">Register</a></li>
+              <li><a id="Warm-Up" class="inactive" href="#">Warm-Up</a></li>
+              <li><a id="Instruction" class="inactive" href="#">Instruction</a></li>
+              <li><a id="Final" class="inactive" href="#">Final</a></li>        
+          </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+
+<div>
+    <h2>User Registration Form</h2>
+    <form method="POST" id="registration_form">
+        <p>Username</p>
+        {{form.username}}
+        <p>SCHOOL Email Address (@edu)</p>
+        {{form.email}}
+        <p>First Name</p>
+        {{form.first_name}}
+        <p>Last Name</p>
+        {{form.last_name}}
+        <p>Password</p>
+        {{form.password1}}
+        <p>Password (Confimation)</p>
+        {{form.password2}}     
+        {% csrf_token %}
+    </form>
+        {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+    <div id="button-box">
+        <button class="btn custbut" form="registration_form" type="submit">Register</button>
+    </div>  
+</div>
+
+{% endblock %}

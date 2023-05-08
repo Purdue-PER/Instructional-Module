@@ -46,11 +46,11 @@
     <h3><strong>Welcome!</strong></h3>
     <form id="form" method="post">
       {% csrf_token %}
-      <span><input id="id_username" name="username" type="text" placeholder="School Email Address">@purdue.edu</span><br/>
-      <input id="id_password" name="password" type="password" placeholder="Purdue ID (Omitting Leading 0s and Dashes)">
+      <span><input id="id_username" name="username" type="text" placeholder="Username"></span><br/>
+      <input id="id_password" name="password" type="password" placeholder="Password">
     </form> 
     <div class="button-box">
-      <button  class="btn custbut" onclick="help();">Help</button>
+      <button  class="btn custbut" onclick="register();">Register</button>
       <button  form="form" type="submit" class="btn custbut">Submit</button>
     </div>
   </div>

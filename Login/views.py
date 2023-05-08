@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib import messages
+from .form import registration_form
+from django.contrib import messages 
 
 
 def loginUser(request):
@@ -30,3 +31,23 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return render(request,'Login/Logout.html')
+
+def register(request):
+    if request.method == "POST":
+        form = registration_form(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            if email.split(".")[-1] == 'edu':
+                messages.success(request, 'Account created successfully') 
+                form.save()
+                return redirect("/Auth/login/")
+            else:
+                form = registration_form(request.POST)
+                messages.error(request, "Please use school email ending in '@edu'")
+                return render(request,'Login/register.html',{"form":form})
+        else: 
+            print(messages.error(request, "Registration Error"))
+    
+    else:
+        form = registration_form()
+        return render(request,'Login/register.html',{'form':form})

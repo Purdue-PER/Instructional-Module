@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-nkfpno@(#=m91e=f+h=g6aa7at_+c#2cjxsm3*xk3x*oeph)le
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'Modules.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'module',
+        'NAME': 'module_v2',
         'USER': 'jeremy',
         'PASSWORD': '1195Eldorado',
         'HOST': 'localhost',
@@ -113,11 +113,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
