@@ -38,15 +38,21 @@ def register(request):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             if email.split(".")[-1] == 'edu':
+                print("passed")
                 messages.success(request, 'Account created successfully') 
                 form.save()
                 return redirect("/Auth/login/")
             else:
+                print("failed")
                 form = registration_form(request.POST)
-                messages.error(request, "Please use school email ending in '@edu'")
+                messages.error(request, "[Please use school email ending in '@edu']")
                 return render(request,'Login/register.html',{"form":form})
         else: 
-            print(messages.error(request, "Registration Error"))
+            errors = form.errors.as_data()
+            for key in errors:
+                messages.error(request,f"{errors[key][0]}")
+            return render(request,'Login/register.html',{"form":form})
+            print(form.errors.as_data())
     
     else:
         form = registration_form()
