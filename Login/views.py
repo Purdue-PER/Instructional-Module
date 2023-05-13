@@ -22,7 +22,7 @@ def loginUser(request):
 
         if user is not None:
             login(request,user)
-            return redirect('/Force/')
+            return redirect('/calibrate/')
         else: 
             messages.error(request,'Password is incorrect')
     

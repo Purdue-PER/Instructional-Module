@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "utility.css"%}">
+<link rel="stylesheet" href="{% static "CSS/calibration.css"%}"> 
+<title>Module | Calibration</title>
+{% endblock %}
+
+{% block body %}
+<div id="starting-message">
+    <div>
+        <h1>
+            <center>In this section you will calibrate the "eye-tracking" by clicking on some red squares as they appear on the screen. This will help determine where you are looking on the screen</center>
+        </h1>
+    </div>
+    <div>
+        <center><button class="btn btn-primary" id="btn1">Continue</button>
+    </div>
+    
+</div>
+<div class="box-column" id="array1">
+    <div class="box-row">
+        <div id="box11" class="box"></div>
+        <div id="box12" class="box"></div>
+        <div id="box13" class="box"></div>
+    </div>
+    <div class="box-row">
+        <div id="box21" class="box"></div>
+        <div id="box22" class="box"></div>
+        <div id="box23" class="box"></div>
+    </div>
+    <div class="box-row">
+        <div id="box31" class="box"></div>
+        <div id="box32" class="box"></div>
+        <div id="box33" class="box"></div>
+    </div>
+</div>
+
+<div class="box-column" id="array2">
+    <div class="box-row">
+        <div id="box112" class="box"></div>
+        <div id="box122" class="box"></div>
+        <div id="box132" class="box"></div>
+    </div>
+    <div class="box-row">
+        <div id="box212" class="box"></div>
+        <div id="box222" class="box"></div>
+        <div id="box232" class="box"></div>
+    </div>
+    <div class="box-row">
+        <div id="box312" class="box"></div>
+        <div id="box322" class="box"></div>
+        <div id="box332" class="box"></div>
+    </div>
+</div>
+<div id="click-end">
+    <div>
+        <h1>Calibration has ended, you will now be redirected to the module</h1>
+    </div>
+</div>
+<script src="{% static "JS/calibration.js"%}"></script>
+{% endblock %}
