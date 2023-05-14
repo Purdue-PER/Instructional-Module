@@ -43,6 +43,15 @@
     flex-direction: column;
 }
 
+#click-end{
+    margin: 5vw;
+    padding: 5vw;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
 #btn1{
     margin: 2vw
 }

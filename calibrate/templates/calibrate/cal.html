@@ -3,6 +3,12 @@
 {% load static %}
 
 {% block head %}
+
+<form id="cal-form" style="display:none">
+    {{form}}
+    {% csrf_token %}
+</form>
+
 <link rel="stylesheet" href="{% static "utility.css"%}">
 <link rel="stylesheet" href="{% static "CSS/calibration.css"%}"> 
 <title>Module | Calibration</title>
@@ -16,7 +22,7 @@
         </h1>
     </div>
     <div>
-        <center><button class="btn btn-primary" id="btn1">Continue</button>
+        <center><button class="btn primary reduced-vis" id="btn1">Continue</button>
     </div>
     
 </div>
@@ -57,7 +63,10 @@
 </div>
 <div id="click-end">
     <div>
-        <h1>Calibration has ended, you will now be redirected to the module</h1>
+        <center><h1>Calibration has ended, you will now be redirected to the module</h1></center>
+    </div>
+    <div>
+        <center><button class="btn primary reduced-vis" id="btn2">Continue</button>
     </div>
 </div>
 <script src="{% static "JS/calibration.js"%}"></script>
