@@ -53,6 +53,7 @@ const click_count = (cnt,max_clicks) => {
     if (cnt >= max_clicks){
         array2.style.display="none";
         message.style.display = "flex";
+        document.getElementById("navbar").style.display = "flex";
         ele("btn2").addEventListener("click",(e) => {
             cal_sub(e,"Finished Calibration");
             window.location.replace("/Force/")
@@ -63,6 +64,7 @@ const click_count = (cnt,max_clicks) => {
 ele("btn1").addEventListener("click",(e) => {
     document.getElementById("starting-message").style.display = "none";
     document.getElementById("array1").style.display = "flex";
+    document.getElementById("navbar").style.display = "none";
     cal_sub(e,"Start Calibration")
 })
 
