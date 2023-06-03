@@ -5,26 +5,36 @@ import Force_HLG.models as force
 import Login.models as log
 from django.contrib.auth.models import User
 from csv import writer
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+moderators = ["rebellos@purdue.edu"]
 
 #### Calibrate ###########################################
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def cal_download_view(request):
     
-    obj = clicks.objects.all()
-    response = HttpResponse(content_type="text/csv",
-    headers={"Content-Disposition": 'attachment; filename="calibrate.csv"'}
-    )
+    if request.user.email in moderators:
 
-    csv_writer = writer(response)
-    csv_writer.writerow(["user","mouseX","mouseY","time_stamp","event"])
-    for row in obj:
-        csv_writer.writerow([row.user, row.mouseX, row.mouseY, row.time_stamp, row.event])
+        obj = clicks.objects.all()
+        response = HttpResponse(content_type="text/csv",
+        headers={"Content-Disposition": 'attachment; filename="calibrate.csv"'}
+        )
 
-    return response
+        csv_writer = writer(response)
+        csv_writer.writerow(["user","mouseX","mouseY","time_stamp","event"])
+        for row in obj:
+            csv_writer.writerow([row.user, row.mouseX, row.mouseY, row.time_stamp, row.event])
+
+        return response
+    
+    else: return HttpResponse("access denied")
 
 
 ## Pretest ###############################################
 
-
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def preEDU_download_view(request):
     
     obj = force.pretestEdu.objects.all()
@@ -39,6 +49,8 @@ def preEDU_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def preLOG_download_view(request):
     
     obj = force.pretestLog.objects.all()
@@ -53,6 +65,8 @@ def preLOG_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def preMouse_download_view(request):
     
     obj = force.pretestMouseEvent.objects.all()
@@ -70,7 +84,8 @@ def preMouse_download_view(request):
 
 ## force/instructional #############################################
 
-
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def forceEDU_download_view(request):
     
     obj = force.forceEDU.objects.all()
@@ -85,6 +100,8 @@ def forceEDU_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def forceLOG_download_view(request):
     
     obj = force.forceLog.objects.all()
@@ -99,6 +116,8 @@ def forceLOG_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def forceMouse_download_view(request):
     
     obj = force.forceMouseEvent.objects.all()
@@ -116,7 +135,8 @@ def forceMouse_download_view(request):
 
 ## Post-Test #########################################################3
 
-
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def postEDU_download_view(request):
     
     obj = force.posttestEdu.objects.all()
@@ -131,6 +151,8 @@ def postEDU_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def postLOG_download_view(request):
     
     obj = force.posttestLog.objects.all()
@@ -145,6 +167,8 @@ def postLOG_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def postMouse_download_view(request):
     
     obj = force.posttestMouseEvent.objects.all()
@@ -163,6 +187,8 @@ def postMouse_download_view(request):
 
 from django.contrib.auth.models import User
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def user_download_view(request):
     
     obj = User.objects.all()
@@ -177,5 +203,7 @@ def user_download_view(request):
 
     return response
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def download_api(request):
     return render(request,"download/data_download.html")

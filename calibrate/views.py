@@ -2,8 +2,10 @@ from django.shortcuts import render
 from .form import cal_form
 from django.http import HttpResponse
 from Modules.settings import admins 
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def calibrate(request):
     if request.method == "POST":
         form = cal_form(request.POST)

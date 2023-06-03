@@ -1,15 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from Force_HLG.form import forceForm, forceLogForm, forceMouseForm
 from .form import *
 import pandas as pd
 
 # Create your views here.
+@login_required
 def info(request):
     return render(request,'Force_HLG/details.html')
 
 # View for pretest
+@login_required
 def pretest(request):
     if request.method == "POST":
         if request.headers['event'] == 'submission':
@@ -53,6 +56,7 @@ def pretest(request):
 
 
 # View for vectors
+@login_required
 def vectors(request):
     if request.method == "POST":
         usr = request.user
@@ -88,6 +92,7 @@ def vectors(request):
         return render(request,'Force_HLG/vectors.html',{"context":context})
 
 # View for forces
+@login_required
 def forces(request):
     if request.method == "POST":
         print('post')
@@ -131,6 +136,7 @@ def forces(request):
         return render(request,'Force_HLG/n2.html',{'context':context})
 
 # View for pretest
+@login_required
 def posttest(request):
     if request.method == "POST":
         if request.headers['event'] == 'submission':
@@ -174,5 +180,6 @@ def posttest(request):
         forms['mouse2'] = posttestMouseForm()
         return render(request,'Force_HLG/postTest.html',{'forms':forms})
 
+@login_required
 def complete(request):
     return render(request,'Force_HLG/complete.html')

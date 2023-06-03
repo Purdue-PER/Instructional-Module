@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from .form import registration_form
 from django.contrib import messages 
 
-
 def loginUser(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -37,6 +36,7 @@ def register(request):
         form = registration_form(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
+
             if email.split(".")[-1] == 'edu':
                 print("passed")
                 messages.success(request, 'Account created successfully') 
