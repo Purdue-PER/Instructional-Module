@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static "utility.css"%}">
+<link rel="stylesheet" href="{% static "CSS/downloads.css"%}"> 
+<title>Module | Calibration</title>
+{% endblock %}
+
+{% block body %}
+<!-- Navbar -->
+<div id="navbar" class="navbar-container">
+    <div class="navbar-logo">
+        <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
+        Force Module
+        </div>
+    <div>
+    </div>
+    <div class="tabs">
+        <nav>
+            <ul>
+                <li><a id="Download" class="active" href="#">Downloads</a></li>
+                <li><a id="Login" class="inactive" href="#">Login</a></li>
+                <li><a id="Calibration" class="inactive" href="#">Calibration</a></li>
+                <li><a id="Warm-Up" class="inactive" href="#">Warm-Up</a></li>
+                <li><a id="Instruction" class="inactive" href="#">Instruction</a></li>
+                <li><a id="Final" class="inactive" href="#">Final</a></li>        
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="box-column" id="array1">
+    <div class="box-row">
+        <div id="box11" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/cal/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Calibration Data</h5></center></div>
+        </div>
+        <div id="box12" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/pre_edu/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Pretest Responses</h5></center></div>
+        </div>
+        <div id="box13" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/pre_log/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Pretest Log</h5></center></div>            
+        </div>
+    </div>
+    <div class="box-row">
+        <div id="box21" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/pre_mouse/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Pretest Mouse&nbsp;Data</h5></center></div>            
+        </div>
+        <div id="box22" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/force_edu/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Force Responses</h5></center></div>            
+        </div>
+        <div id="box23" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/force_log/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Force Log</h5></center></div>
+        </div>
+    </div>
+    <div class="box-row">
+        <div id="box31" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/force_mouse/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Force Mouse&nbsp;Data</h5></center></div>            
+        </div>
+        <div id="box32" class="box">
+            <div><button class="btn primary" onclick="window.location.replace('/download/post_edu/')">Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Posttest Responses</h5></center></div>
+        </div>
+        <div id="box33" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/post_log/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Posttest Log</h5></center></div>
+        </div>
+    </div>
+    <div class="box-row">
+        <div id="box41" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/post_mouse/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;Posttest Mouse&nbsp;Data</h5></center></div>
+        </div>
+        <div id="box42" class="box">
+
+        </div>
+        <div id="box43" class="box">
+            <div><button class="btn primary" onclick='window.location.replace("/download/user/")'>Download</button></div>
+            <div><center><h5 class="description">Dowload&nbsp;User Data</h5></center></div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
