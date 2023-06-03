@@ -1,6 +1,14 @@
 boxes = ["box11","box12","box13","box21","box22","box23","box31","box32","box33"]
 boxes2 = ["box112","box122","box132","box212","box222","box232","box312","box322","box332"]
 
+admin = document.getElementById("is_admin").value
+download = document.getElementById("Download")
+console.log(String(admin))
+const admin_check = (admin) => {
+    if (String(admin) === "True"){
+        download.style.display = "inline";
+    }
+}
 
 const cal_sub = (e,message) => {
     let calForm = document.getElementById("cal-form")
@@ -24,6 +32,7 @@ const cal_sub = (e,message) => {
 
 window.addEventListener("load",function(){
     cal_sub("NA","Page Load")
+    admin_check(admin);
 })
 
 

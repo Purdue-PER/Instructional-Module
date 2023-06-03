@@ -14,6 +14,6 @@ urlpatterns = [
     path('SHM/',views.SHO_Classify,name="shm"),
     # Serves as the entry point to the different modules (HLG/LLG)
     path('Force/Force_HLG/',include('Force_HLG.urls')),
-    path('api/',include('api.urls')),
-    path('calibrate/',include('calibrate.urls'))
+    path('calibrate/',include('calibrate.urls')),
+    path('download/',include('download.urls'))
 ]
