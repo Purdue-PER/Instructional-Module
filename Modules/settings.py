@@ -133,7 +133,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static')
-LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_REDIRECT_URL = '/Auth/login/'
+LOGIN_URL = '/Auth/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
