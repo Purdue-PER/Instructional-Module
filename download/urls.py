@@ -16,4 +16,5 @@ urlpatterns = [
     path('post_edu/', views.forceEDU_download_view, name='post_edu'),
     path('post_log/', views.forceLOG_download_view, name='post_log'),
     path('post_mouse/', views.forceMouse_download_view, name='post_mouse'),
+    path('llm/', views.llm_download_view, name='post_mouse'),
 ]

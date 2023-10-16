@@ -556,14 +556,15 @@ form{
   ######################*/
 
 .content-stage{
+    width: 95%;
+    height: 88%;
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
     grid-template-columns: 1fr 6fr 1fr;
     align-items: center;
     justify-content: center;
     background-color: whitesmoke;
-    border-radius: 30px;
-    margin: 2% auto;
+    margin: auto;
     overflow: hidden;
  }
 
@@ -599,6 +600,24 @@ form{
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+#start{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* top, right, bottom, left */
+#registration_form input{
+    width: 45vw;
+    height: 5vh;
+    margin-left: 1vw;
+}
+
+#registration_form p{
+    margin-bottom: 0.5vh; 
 }
 
 

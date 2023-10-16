@@ -15,5 +15,7 @@ urlpatterns = [
     # Serves as the entry point to the different modules (HLG/LLG)
     path('Force/Force_HLG/',include('Force_HLG.urls')),
     path('calibrate/',include('calibrate.urls')),
-    path('download/',include('download.urls'))
+    path('download/',include('download.urls')),
+    path('llm/',include('llm.urls')),
+
 ]

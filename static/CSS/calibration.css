@@ -1,0 +1,62 @@
+.box-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.box-column{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+/* top, right, bottom, left */
+
+.box{
+    background-color: red;
+    padding: 1vh 1vw 1vh 1vw;
+    margin: 15vh 15vw 15vh 15vw;
+    opacity: 0;
+}
+
+#array1{
+    display: none
+}
+
+#array2{
+    display: none;
+}
+
+#click-end{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 5vw
+}
+
+#starting-message{
+    margin: 5vw;
+    padding: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+#click-end{
+    margin: 5vw;
+    padding: 5vw;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+#btn1{
+    margin: 2vw
+}
+
+#Download{
+    display: none;
+}
+

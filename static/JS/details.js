@@ -1,24 +1,29 @@
-const hide1 = () => {
-    $("#main1").css("display","none");
-};
-
-const show1 = () => {
-    $("#main1").css("display","grid");
-};
-
-const hide2 = () => {
-    $("#main2").css("display","none");
-};
-
-const show2 = () => {
-    $("#main2").css("display","grid")
-};
-
-const nextPage = () => {
-    window.location.replace('warmup/')
+const main1 = (show) => {
+    if (show) {
+        document.getElementById("main1").style.display = 'grid';
+    } else {
+        document.getElementById("main1").style.display = 'none';
+    }
+}
+const main2 = (show) => {
+    if (show) {
+        document.getElementById("main2").style.display = 'grid';
+    } else {
+        document.getElementById("main2").style.display = 'none';
+    }
 }
 
-$(document).ready(function(){
-    
-    hide2();
+document.getElementById("btn1").addEventListener("click",function(){
+    main1(false);
+    main2(true);
 })
+document.getElementById("btn2").addEventListener("click",function(){
+    main2(false);
+    main1(true);
+})
+document.getElementById("btn3").addEventListener("click",function(){
+    window.location.replace('warmup/')
+})
+
+main1(true)
+main2(false);

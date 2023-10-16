@@ -3,32 +3,28 @@ from django.http import HttpResponse
 from calibrate.models import clicks
 import Force_HLG.models as force
 import Login.models as log
+from llm.models import llm_data
 from django.contrib.auth.models import User
 from csv import writer
 from django.contrib.auth.decorators import login_required, user_passes_test
-
-moderators = ["rebellos@purdue.edu"]
 
 #### Calibrate ###########################################
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def cal_download_view(request):
-    
-    if request.user.email in moderators:
 
-        obj = clicks.objects.all()
-        response = HttpResponse(content_type="text/csv",
-        headers={"Content-Disposition": 'attachment; filename="calibrate.csv"'}
-        )
 
-        csv_writer = writer(response)
-        csv_writer.writerow(["user","mouseX","mouseY","time_stamp","event"])
-        for row in obj:
-            csv_writer.writerow([row.user, row.mouseX, row.mouseY, row.time_stamp, row.event])
+    obj = clicks.objects.all()
+    response = HttpResponse(content_type="text/csv",
+    headers={"Content-Disposition": 'attachment; filename="calibrate.csv"'}
+    )
 
-        return response
-    
-    else: return HttpResponse("access denied")
+    csv_writer = writer(response)
+    csv_writer.writerow(["user","mouseX","mouseY","time_stamp","event"])
+    for row in obj:
+        csv_writer.writerow([row.user, row.mouseX, row.mouseY, row.time_stamp, row.event])
+
+    return response
 
 
 ## Pretest ###############################################
@@ -88,7 +84,7 @@ def preMouse_download_view(request):
 @user_passes_test(lambda u: u.is_superuser)
 def forceEDU_download_view(request):
     
-    obj = force.forceEDU.objects.all()
+    obj = force.forceEdu.objects.all()
     response = HttpResponse(content_type="text/csv",
     headers={"Content-Disposition": 'attachment; filename="forceEDU.csv"'}
     )
@@ -110,9 +106,9 @@ def forceLOG_download_view(request):
     )
 
     csv_writer = writer(response)
-    csv_writer.writerow(["pageState","event","user","VideoNumber","videoTime","timeStamp","wandering"])
+    csv_writer.writerow(["pageState","event","user","VideoNumber","videoTime","timeStamp","Wandering"])
     for row in obj:
-        csv_writer.writerow([row.pageState,row.event,row.user,row.videoNumber,row.timeStamp,row.wandering])
+        csv_writer.writerow([row.pageState,row.event,row.user,row.videoNumber,row.videoTime,row.timeStamp,row.Wandering])
 
     return response
 
@@ -185,8 +181,6 @@ def postMouse_download_view(request):
 
 ## User model ########################################33
 
-from django.contrib.auth.models import User
-
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def user_download_view(request):
@@ -207,3 +201,19 @@ def user_download_view(request):
 @user_passes_test(lambda u: u.is_superuser)
 def download_api(request):
     return render(request,"download/data_download.html")
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def llm_download_view(request):
+    
+    obj = llm_data.objects.all()
+    response = HttpResponse(content_type="text/csv",
+    headers={"Content-Disposition": 'attachment; filename="llm_responses.csv"'}
+    )
+
+    csv_writer = writer(response)
+    csv_writer.writerow(["user","message","response"])
+    for row in obj:
+        csv_writer.writerow([row.user,row.message,row.response])
+
+    return response

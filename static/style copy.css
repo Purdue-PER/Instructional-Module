@@ -1,0 +1,26 @@
+/* top, right, bottom, and left */
+
+input, select {
+    width: 80%;
+    font-size: 18px;
+    padding: 18px;
+    margin: 5px 15px 5px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+p{
+    padding:0;
+    margin: 5px 15px 5px 15px;
+    font-size: 16px;
+}
+
+#registration_form{
+    width: 80%
+}
+
+#button-box{
+    margin: 15px 0 0 15px
+}

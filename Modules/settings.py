@@ -24,12 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nkfpno@(#=m91e=f+h=g6aa7at_+c#2cjxsm3*xk3x*oeph)le'
+SECRET_KEY = '0-im3jvexc@7+^yy@hre!e8_zmsb8r7p0va1krmu1jjkx6q186'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['104.131.182.238','themoduleproject.info',
+'www.themoduleproject.info','localhost','127.0.0.1']
 
 admins = ["jeremy"]
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'download',
     'Force_HLG',
     'import_export',
+    'llm',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,7 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 LOGIN_REDIRECT_URL = '/Auth/login/'
 LOGIN_URL = '/Auth/login/'
 

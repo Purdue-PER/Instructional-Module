@@ -67,81 +67,99 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
+
+/* 
+###########################################
+#                                         #
+#         wanderFunc submission of        #
+#               form data                 #
+#                                         #
+#        For mind wandering prompt        #
+#                                         #
+###########################################
+*/
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
   
-  const wanderFunc = () =>{
-    const randX = getRandomInt(120,240)
-    const WanderDIV = document.getElementById("wander")
-        setTimeout(function(){
-        if(pageSt != 'Question' && pageSt != 'Feedback' && pageSt != 'Review1' && pageSt != 'Review2'){
-          WanderDIV.style.display = "block"
-          document.getElementById("tone").play()
-          const newDate = new Date();
-          const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getSeconds()}`
-  
-          let Audio
-          const AudioForm = document.querySelector("#audio-events2")
-          AudioForm.user.value = userID
-          AudioForm.event.value = 'Wander Prompt';
-          AudioForm.pageState.value = pageSt
-          switch (pageSt) {
-            case 'start':
+const wanderFunc = () =>{
+const randX = getRandomInt(120,240)
+const WanderDIV = document.getElementById("wander")
+    setTimeout(function(){
+    if(pageSt != 'Question' && pageSt != 'Feedback' && pageSt != 'Review1' && pageSt != 'Review2'){
+        WanderDIV.style.display = "block"
+        document.getElementById("tone").play()
+        const newDate = new Date();
+        const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getSeconds()}`
+
+        let Audio
+        const AudioForm = document.querySelector("#audio-events2")
+        AudioForm.user.value = userID
+        AudioForm.event.value = 'Wander Prompt';
+        AudioForm.pageState.value = pageSt
+        switch (pageSt) {
+        case 'start':
+        
+            AudioForm.videoNumber.value = "NA";
+            AudioForm.timeStamp.value = datetime;
+            AudioForm.videoTime.value = "NA";
+            break;
+
+        case 'Forces Frame 0':
+
+            AudioForm.videoNumber.value = "NA";
+            AudioForm.timeStamp.value = datetime;
+            AudioForm.videoTime.value = "NA";
+            break;
+
+        case 'Forces Frame 1':
+        
+            Audio = document.getElementById("audio")
+            Audio.pause()
+        
+            AudioForm.videoNumber.value = "Video 1";
+            AudioForm.timeStamp.value = datetime;
+            AudioForm.videoTime.value = Audio.currentTime;
+            break;
+
+        case 'Forces Frame 2':
+        
+            Audio = document.getElementById("audio2")
+            Audio.pause()
+        
+            AudioForm.videoNumber.value = "Video 2";
+            AudioForm.timeStamp.value = datetime;
+            AudioForm.videoTime.value = Audio.currentTime;
+            break;
+        
+        default:
+        
+            AudioForm.videoNumber.value = "NA";
+            AudioForm.timeStamp.value = datetime;
+            AudioForm.videoTime.value = "NA";
+            break;
+        }
+
+
+        document.addEventListener("keydown",function(e){
+            if (e.code === "KeyY" || e.code === "KeyN") {
+            WanderDIV.style.display = 'none'
+            AudioForm.Wandering.value = e.code
+            $("#audio-events2").triggerHandler("submit")
             
-              AudioForm.videoNumber.value = "NA";
-              AudioForm.timeStamp.value = datetime;
-              AudioForm.videoTime.value = "NA";
-              break;
+        }
+        })
+
+        
+        wanderFunc()
+    }},randX*1000)
+}
+
+wanderFunc()
   
-            case 'Forces Frame 0':
-  
-              AudioForm.videoNumber.value = "NA";
-              AudioForm.timeStamp.value = datetime;
-              AudioForm.videoTime.value = "NA";
-              break;
-  
-            case 'Forces Frame 1':
-            
-              Audio = document.getElementById("audio")
-              Audio.pause()
-            
-              AudioForm.videoNumber.value = "Video 1";
-              AudioForm.timeStamp.value = datetime;
-              AudioForm.videoTime.value = Audio.currentTime;
-              break;
-  
-            case 'Forces Frame 2':
-            
-              Audio = document.getElementById("audio2")
-              Audio.pause()
-            
-              AudioForm.videoNumber.value = "Video 2";
-              AudioForm.timeStamp.value = datetime;
-              AudioForm.videoTime.value = Audio.currentTime;
-              break;
-          
-            default:
-          
-              AudioForm.videoNumber.value = "NA";
-              AudioForm.timeStamp.value = datetime;
-              AudioForm.videoTime.value = "NA";
-              break;
-            }
-  
-  
-            document.addEventListener("keydown",function(e){
-              if (e.code === "KeyY" || e.code === "KeyN") {
-                WanderDIV.style.display = 'none'
-                AudioForm.Wandering.value = e.code
-                $("#audio-events2").triggerHandler("submit")
-                
-            }
-            })
-  
-            
-            wanderFunc()
-        }},randX*1000)
-    }
-  
-  wanderFunc()
 
 const strt = (show) => {
     if(show){
@@ -1349,7 +1367,7 @@ document.getElementById("nxt-btn").addEventListener("click",function(){
 })
 
 document.getElementById("cal").addEventListener('click',function(){
-    window.location.replace("/Force/Force_HLG/Post/")
+    window.location.replace("https://www.physics.purdue.edu/people/rebello-survey.html")
 })
 
 

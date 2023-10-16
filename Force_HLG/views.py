@@ -54,6 +54,9 @@ def pretest(request):
         forms['mouse2'] = pretestMouseForm()
         return render(request,'Force_HLG/pretest.html',{'forms':forms})
 
+def pretest2(request):
+    pass
+
 
 # View for vectors
 @login_required

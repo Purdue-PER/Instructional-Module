@@ -1,0 +1,201 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block styles %}
+<style>
+    body, html {
+      height: 100%;
+    }
+
+    a .nav-link {
+      color: #66fcf1
+    }
+
+    #nav {
+      color: #0B0C10;
+    }
+
+    .messages-box {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .messages-list {
+      padding-left: 0;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      list-style: none;
+    }
+
+    .message-text {
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sent {
+      background-color: #cbebe6;
+      align-self: flex-end;
+    }
+
+    .received {
+      background-color: #b0dacb;
+      align-self: flex-start;
+    }
+
+    .message-form {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    .card.flex-grow-1{
+      background-color: #fff
+    }
+    .message-input {
+      flex: 1;
+      border-radius: 0;
+      border-right: none;
+    }
+
+    .btn-send {
+      border-radius: 0;
+    }
+
+    .chat-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+{% endblock %}
+
+{% block title %}
+blah
+{% endblock %}
+
+{% block content %}
+<div class="chat-container" id="scrollContainer">
+  <div class="card flex-grow-1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'img/Group 21.png' %}" style="width: 5vw">    
+    </a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Login</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+    <div class="card-body messages-box">
+      
+      <ul class="list-unstyled messages-list">
+        
+        <li class="message received">
+          <div class="message-text">
+            <div class="message-sender">
+              <img src="{% static 'img/download.jpeg' %}" style="width: 2.5vw">
+            </div>
+            <div class="message-content">
+              Hi, I am EinsteinAI, you can ask me anything.
+            </div>
+          </div>
+        </li>
+      </ul>
+      
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+  </div>
+  <form class="message-form">
+    {%csrf_token%}
+    <div class="input-group">
+      <input type="text" class="form-control message-input" placeholder="Type your message...">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary btn-send" id="sub-btn">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  const messagesList = document.querySelector('.messages-list')
+  const messageForm = document.querySelector('.message-form')
+  const messageInput = document.querySelector('.message-input')
+
+  messageForm.addEventListener('submit',(e) => {
+    e.preventDefault()
+
+    const message = messageInput.value.trim();
+    if (message.length === 0) {
+      return;
+    }
+
+
+  const messageItem = document.createElement('li');
+  messageItem.classList.add('message','sent');
+  messageItem.innerHTML = `
+  <div class="message-text">
+    <div class="message-sender">
+      <b>You</b>
+    </div>
+    <div class = "message-content">
+      ${message}
+    </div>
+  </div>`;
+
+  messagesList.appendChild(messageItem);
+
+  messageInput.value = '';
+
+  fetch('', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams({
+      'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+      'message': message
+    })
+  }).then(response => response.json())
+  .then(data => {
+    const response = data.response;
+    const messageItem = document.createElement('li');
+    messageItem.classList.add('message','received');
+    messageItem.innerHTML = `
+    <div class="message-text">
+    <div class="message-sender">
+      <b>AI-Chatbot</b>
+    </div>
+    <div class = "message-content">
+      ${response}
+    </div>
+  </div>`;
+  messagesList.appendChild(messageItem);
+  window.scrollTo(0, document.body.scrollHeight);
+  })
+})
+
+</script>
+
+{% endblock %}

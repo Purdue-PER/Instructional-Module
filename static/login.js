@@ -15,5 +15,9 @@ const back = () => {
       window.location.replace('/Auth/login/')
     }
 
+    const register = () => {
+      window.location.replace('/Auth/register/')
+    }
+
 navStatus('Module',1);
 
