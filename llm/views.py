@@ -3,7 +3,7 @@ import openai
 from django.http import JsonResponse
 from .models import llm_data
 
-OPENAI_KEY = "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"
+OPENAI_KEY = "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"
 
 openai.api_key = OPENAI_KEY
 
